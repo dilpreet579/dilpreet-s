@@ -8,23 +8,30 @@ import ReactIcon from '@/components/technologies/ReactIcon';
 import Firebase from '@/components/technologies/Firebase';
 import Expo from '@/components/technologies/Expo';
 import { Project } from '@/types/project';
+import FramerMotion from '@/components/technologies/FramerMotion';
+import TailwindCss from '@/components/technologies/TailwindCss';
+import FastAPI from '@/components/technologies/FastAPI';
+import Streamlit from '@/components/technologies/Streamlit';
+import Selenium from '@/components/technologies/Selenium';
+import Puppeteer from '@/components/technologies/Puppeteer';
 
 export const projects: Project[] = [
   {
     title: 'UniPool - University Carpooling Platform',
     description: 'An exclusive carpooling application designed for university students to share rides securely, currently in development with a focus on verified student matching.',
     image: '/project/unipool.png',
-    link: '#',
+    link: '',
     technologies: [
       { name: 'Expo', icon: <Expo key="expo" /> },
+      { name: 'React Native', icon: <ReactIcon key="react-native" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
       { name: 'Firebase', icon: <Firebase key="firebase" /> },
     ],
     github: 'https://github.com/dilpreet579/unipool',
-    live: '#',
+    live: '',
     details: true,
     projectDetailsPageSlug: '/projects/unipool',
-    isWorking: true,
+    isWorking: false,
   },
   {
     title: 'RideShare - Premium AI Ride Platform',
@@ -33,9 +40,10 @@ export const projects: Project[] = [
     link: 'https://fj-fe-r2-dilpreet-nit-delhi.vercel.app/',
     technologies: [
       { name: 'Next.js 14', icon: <NextJs key="nextjs" /> },
+      { name: 'React', icon: <ReactIcon key="react" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Tailwind CSS', icon: <ReactIcon key="tailwind" /> },
-      { name: 'Azure OpenAI', icon: <Python key="openai" /> },
+      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwind" /> },
+      { name: 'Framer Motion', icon: <FramerMotion key="framer-motion" /> },
     ],
     github: 'https://github.com/dilpreet579/FJ-FE-R2-Dilpreet-NIT-Delhi',
     live: 'https://fj-fe-r2-dilpreet-nit-delhi.vercel.app/',
@@ -51,7 +59,7 @@ export const projects: Project[] = [
     technologies: [
       { name: 'Python', icon: <Python key="python" /> },
       { name: 'PyTorch', icon: <PyTorch key="pytorch" /> },
-      { name: 'FaceNet', icon: <TypeScript key="facenet" /> },
+      { name: 'NextJS', icon: <NextJs key="nextjs" /> },
     ],
     github: 'https://github.com/dilpreet579/clairvision-model',
     live: '#',
@@ -67,6 +75,10 @@ export const projects: Project[] = [
     technologies: [
       { name: 'Python', icon: <Python key="python" /> },
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
+      { name: 'FastAPI', icon: <FastAPI key="fastapi" /> },
+      { name: 'Streamlit', icon: <Streamlit key="streamlit" /> },
+      { name: 'Selenium', icon: <Selenium key="selenium" /> },
+      { name: 'Puppeteer', icon: <Puppeteer key="puppeteer" /> },
     ],
     github: 'https://github.com/dilpreet579/Real-time-Grinch-Bots-Detection',
     live: 'https://bot-detector-model-dashboard.onrender.com/',
@@ -78,15 +90,16 @@ export const projects: Project[] = [
     title: 'VocaAI - AI Receptionist for Businesses',
     description: 'Launched an AI-powered virtual receptionist, enabling 24/7 customer support and call automation.',
     image: '/project/vocaai.png',
-    link: '#',
+    link: 'https://voca-ai.vercel.app/',
     technologies: [
       { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
+      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwind" /> },
     ],
-    github: '#',
-    live: '#',
+    github: 'https://github.com/dilpreet579/voca-ai',
+    live: 'https://voca-ai.vercel.app/',
     details: true,
     projectDetailsPageSlug: '/projects/vocaai',
     isWorking: true,
