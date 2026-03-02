@@ -5,6 +5,7 @@ import PostgreSQL from '@/components/technologies/PostgreSQL';
 import Postman from '@/components/technologies/Postman';
 import TypeScript from '@/components/technologies/TypeScript';
 import GCP from '@/components/technologies/GCP';
+import Python from '@/components/technologies/Python';
 
 export interface Technology {
   name: string;
@@ -48,7 +49,7 @@ export const experiences: Experience[] = [
       {
         name: 'Python',
         href: 'https://www.python.org/',
-        icon: <TypeScript />,
+        icon: <Python />,
       },
       {
         name: 'Next.js',
