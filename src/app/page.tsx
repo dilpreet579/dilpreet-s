@@ -16,7 +16,7 @@ export default function page() {
       <Work />
       <About />
       <Github />
-      <CTA />
+      {/* <CTA /> */} // Removed CTA for now, can be added back later if needed
       <Journey />
     </Container>
   );
