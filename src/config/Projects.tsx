@@ -18,6 +18,9 @@ import Shadcn from '@/components/technologies/Shadcn';
 import Docker from '@/components/technologies/Docker';
 import SQLite from '@/components/technologies/SQLite';
 import Langflow from '@/components/technologies/Langflow';
+import SocketIo from '@/components/technologies/SocketIo';
+import Prisma from '@/components/technologies/Prisma';
+import PostgreSQL from '@/components/technologies/PostgreSQL';
 
 export const projects: Project[] = [
   {
@@ -92,6 +95,26 @@ export const projects: Project[] = [
     isWorking: true,
   },
   {
+    title: 'Event Check-In App',
+    description: 'A full-stack real-time event engagement platform where users can browse upcoming events, check in, and see live attendee updates.',
+    image: '/project/event-checkin.png',
+    link: '#', 
+    technologies: [
+      { name: 'React Native', icon: <ReactIcon key="react-native" /> },
+      { name: 'Expo', icon: <Expo key="expo" /> },
+      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
+      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
+      { name: 'Prisma', icon: <Prisma key="prisma" /> },
+      { name: 'Socket.io', icon: <SocketIo key="socketio" /> },
+      { name: 'Docker', icon: <Docker key="docker" /> },
+    ],
+    github: 'https://github.com/dilpreet579/event-checkin-app',
+    live: '#',
+    details: true,
+    projectDetailsPageSlug: '/projects/event-checkin',
+    isWorking: true,
+  },
+  {
     title: 'Flowbit Orchestration',
     description: 'A modern web application for orchestrating and managing Langflow workflows, built with Next.js, TypeScript, and SQLite.',
     image: '/project/flowbit-orchestration.png',
@@ -133,11 +156,12 @@ export const projects: Project[] = [
 ];
 
 export const featuredProjectSlugs = [
-  'flowbit-orch',
   'rideshare',
   'unipool',
   'clairvision',
   'bot-detection',
+  'event-checkin',
+  'flowbit-orch',
   'vocaai',
 ];
 

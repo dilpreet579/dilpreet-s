@@ -1,0 +1,76 @@
+---
+title: 'Event Check-In App'
+description: 'A full-stack real-time event engagement platform where users can browse upcoming events, check in, and see live attendee updates. Built with React Native (Expo), Node.js, GraphQL, Prisma, PostgreSQL, and Socket.io.'
+image: '/project/event-checkin.png'
+technologies:
+  [
+    'React Native',
+    'Expo',
+    'TypeScript',
+    'Node.js',
+    'Express',
+    'GraphQL',
+    'Apollo Server',
+    'Prisma',
+    'PostgreSQL',
+    'Socket.io',
+    'Zustand',
+    'TanStack Query',
+    'Docker',
+  ]
+github: 'https://github.com/dilpreet579/event-checkin-app'
+live: ''
+timeline: 'March 2026'
+role: 'Full Stack Developer'
+team: 'Solo'
+status: 'completed'
+featured: true
+challenges:
+  [
+    'Real-time Attendee Sync',
+    'Complex State Management',
+    'GraphQL Subscriptions',
+    'Optimistic UI Updates',
+    'Cross-Platform Compatibility',
+  ]
+learnings:
+  [
+    'Building Real-time Systems',
+    'Prisma ORM with PostgreSQL',
+    'Apollo Client & Server',
+    'Mobile-First Architecture',
+    'Containerization with Docker',
+  ]
+isPublished: true
+---
+
+## Overview
+
+The Real-Time Event Check-In App is a comprehensive mobile solution designed to streamline event management and attendee engagement. By leveraging a robust tech stack including React Native for the frontend and a Node.js/GraphQL backend, the application provides instantaneous updates on event participation. Users can seamlessly join events and watch the attendee count and list update in real-time without needing to refresh, creating a dynamic and interactive experience.
+
+## Key Features
+
+- **Live Event Updates:** Real-time synchronization of attendee lists and counts using Socket.io and GraphQL.
+- **Instant Check-In:** Users can join or leave events with a single tap, with changes reflected immediately across all connected clients.
+- **Event Discovery:** Browse a curated list of upcoming events with detailed information.
+- **Mock Authentication:** A streamlined demo login system allowing users to switch between different personas to test real-time interactions.
+- **Modern UI/UX:** A responsive and polished interface built with React Native and Expo, featuring smooth transitions and clear data visualization.
+
+## Tech Stack
+
+- **Frontend:** React Native (Expo), TypeScript, Zustand (State Management), TanStack Query (Data Fetching), Apollo Client (GraphQL)
+- **Backend:** Node.js, Express, Apollo Server, GraphQL, Socket.io
+- **Database:** PostgreSQL, Prisma ORM
+- **Infrastructure:** Docker (for containerized database management)
+
+## Architecture & Challenges
+
+- **Real-Time Synchronization:** One of the primary challenges was ensuring that all users see the same data at the same time. I implemented a dual-layer approach using GraphQL for structured data fetching and Socket.io for instant event propagation. When a user checks in, a socket event is emitted, triggering immediate specific updates on other clients.
+- **State Management:** Managing the complex interplay between server state (events, attendees) and client state (current user, UI interactions) required a careful strategy. I utilized TanStack Query for caching and synchronization, combined with Zustand for global application state, ensuring a snappy and bug-free user experience.
+- **Data Consistency:** Ensuring data integrity while allowing concurrent user actions was handled through Prisma transactions and optimistic UI updates, providing immediate feedback to the user while the backend processed the request.
+
+## Future Plans
+
+- **Authentication:** Replace the mock login with secure authentication (OAuth/JWT).
+- **Event Creation:** Allow users to create and manage their own events.
+- **Push Notifications:** Notify users when an event is starting or when friends join.
