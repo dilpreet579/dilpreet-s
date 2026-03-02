@@ -10,7 +10,6 @@ import Prisma from '@/components/technologies/Prisma';
 import PyTorch from '@/components/technologies/PyTorch';
 import Python from '@/components/technologies/Python';
 import ReactIcon from '@/components/technologies/ReactIcon';
-// Technology Components
 import TypeScript from '@/components/technologies/TypeScript';
 
 // Component mapping for skills

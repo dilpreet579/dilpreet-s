@@ -7,6 +7,7 @@ import TypeScript from '@/components/technologies/TypeScript';
 import ReactIcon from '@/components/technologies/ReactIcon';
 import { Project } from '@/types/project';
 import Firebase from '@/components/technologies/Firebase';
+import Expo from '@/components/technologies/Expo';
 
 export const projects: Project[] = [
   {
@@ -15,7 +16,7 @@ export const projects: Project[] = [
     image: '/project/unipool.png',
     link: '#',
     technologies: [
-      { name: 'Expo', icon: <ReactIcon key="react" /> },
+      { name: 'Expo', icon: <Expo key="expo" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
       { name: 'Firebase', icon: <Firebase key="firebase" /> },
     ],
