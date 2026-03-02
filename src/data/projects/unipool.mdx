@@ -1,0 +1,70 @@
+---
+title: 'UniPool - University Carpooling Platform'
+description: 'An exclusive carpooling application designed for university students to share rides securely, currently in development with a focus on verified student matching.'
+image: '/project/unipool.png'
+video: '/project/unipool.mp4'
+technologies:
+  [
+    'Expo (React Native)',
+    'TypeScript',
+    'Expo Router',
+    'Firebase Auth',
+    'Cloud Firestore',
+    'react-native-maps',
+    '@gorhom/bottom-sheet',
+  ]
+github: 'https://github.com/dilpreet579/unipool'
+live: ''
+timeline: 'IN PROGRESS'
+role: 'Full Stack'
+team: '3'
+status: 'In Development'
+featured: true
+challenges: ['Exclusive University Verification', 'Reliable Auth Persistence', 'Realtime Firestore Sync', 'Map + Bottom Sheet UX']
+learnings: ['Expo Router Navigation Patterns', 'Firebase Auth + Firestore', 'Theme Systems (Light/Dark)', 'Location Services Integration']
+isPublished: true
+---
+
+## Overview
+
+**UniPool** is an exclusive mobile carpooling platform that prioritizes secure, cost-effective travel for university students. Currently in development, the application aims to solve daily commuting challenges by matching students on similar routes, fostering community trust through strict institutional verification, and reducing the financial burden of daily travel.
+
+## Key Features (In Development)
+
+### **Secure Ride System**
+
+- **Find & Offer Rides**: Seamless interface for drivers to list empty seats and riders to find matching commutes.
+- **Exclusive Verification**: Domain-locked signup/login (university email) with email verification + profile gating.
+- **Cost Sharing**: Built-in mechanisms to equitably split commuting expenses.
+- **Schedule Syncing**: Matching algorithms based on class timings and daily departure schedules.
+
+### **Safety & Coordination Design**
+
+- **Real-time Tracking (Planned)**: Live GPS updates for active carpools.
+- **In-app Messaging (Planned)**: Secure communication between matched drivers and riders.
+- **Custom Pickups**: Flexible coordination for convenient campus drop-off and pickup points.
+- **Peer Trust Network**: Travel exclusively with verified peers from your own institution.
+
+## Development Progress
+
+### **Current Status**
+
+- **In Development**: Building out ride discovery + ride request flows.
+- **UI/UX**: Map-first home screen with a draggable bottom sheet ride feed.
+- **Security**: University domain-lock + email verification, plus profile setup stored in Firestore.
+- **Realtime Data**: Rides are posted and listed via Cloud Firestore subscriptions.
+
+### **Completed**
+
+- **Auth + Verification**: Firebase email/password auth, domain restriction, email verification checks.
+- **Profile Setup**: Firestore-backed profile creation + route guards (must be verified + profile complete).
+- **Rides MVP**: Host can post rides; Ride tab shows a feed sourced from Firestore.
+- **Ride Details Modal**: `/modal` screen (modal presentation) that loads a ride by `rideId` from Firestore.
+- **Design System**: Central Light/Dark theme tokens via `ThemedView`/`ThemedText` (no hardcoded colors in renders).
+- **Map + Bottom Sheet**: `react-native-maps` background + `@gorhom/bottom-sheet` ride list.
+
+### **Next Up**
+
+- **Request to Join**: Persist ride requests + basic approval flow.
+- **Messaging**: Driver/rider chat (after a request is accepted).
+- **Live Location (Optional)**: Location sharing during an active ride.
