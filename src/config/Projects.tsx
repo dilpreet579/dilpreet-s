@@ -21,6 +21,7 @@ import Langflow from '@/components/technologies/Langflow';
 import SocketIo from '@/components/technologies/SocketIo';
 import Prisma from '@/components/technologies/Prisma';
 import PostgreSQL from '@/components/technologies/PostgreSQL';
+import NestJs from '@/components/technologies/NestJs';
 
 export const projects: Project[] = [
   {
@@ -136,6 +137,25 @@ export const projects: Project[] = [
     isWorking: true,
   },
   {
+    title: 'Payment Dashboard App',
+    description: 'A comprehensive, real-time payment management application featuring secure authentication and live transaction tracking.',
+    image: '/project/payment-dashboard.png',
+    link: '#', 
+    technologies: [
+      { name: 'Expo', icon: <Expo key="expo" /> },
+      { name: 'React Native', icon: <ReactIcon key="react-native" /> },
+      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
+      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
+      { name: 'Prisma', icon: <Prisma key="prisma" /> },
+      { name: 'Socket.io', icon: <SocketIo key="socketio" /> },
+    ],
+    github: 'https://github.com/dilpreet579/payments-dashboard-app',
+    live: '',
+    details: true,
+    projectDetailsPageSlug: '/projects/payments-dashboard',
+    isWorking: true,
+  },
+  {
     title: 'VocaAI - AI Receptionist for Businesses',
     description: 'Launched an AI-powered virtual receptionist, enabling 24/7 customer support and call automation.',
     image: '/project/vocaai.png',
@@ -162,6 +182,7 @@ export const featuredProjectSlugs = [
   'bot-detection',
   'event-checkin',
   'flowbit-orch',
+  'payments-dashboard',
   'vocaai',
 ];
 

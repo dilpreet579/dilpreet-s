@@ -1,0 +1,75 @@
+---
+title: 'Payment Dashboard App'
+description: 'A comprehensive, real-time payment management application featuring secure authentication, live transaction tracking, and interactive financial analytics for mobile platforms.'
+image: '/project/payment-dashboard.png'
+technologies:
+  [
+    'React Native (Expo)',
+    'TypeScript',
+    'NestJS',
+    'PostgreSQL',
+    'Prisma',
+    'Socket.io',
+    'React Native Chart Kit',
+    'Expo Secure Store',
+    'JWT Authentication',
+    'Axios'
+  ]
+github: 'https://github.com/dilpreet579/payments-dashboard-app'
+live: ''
+timeline: 'June 2025'
+role: 'Full Stack Developer'
+team: 'Solo'
+status: 'Completed'
+featured: true
+challenges:
+  [
+    'Real-time WebSocket Integration in Mobile',
+    'Secure Token Storage & Refresh',
+    'Cross-Platform UI Consistency',
+    'Complex Chart Implementations',
+    'Role-Based Access Control'
+  ]
+learnings:
+  [
+    'NestJS Gateway Architecture',
+    'Expo Application Services',
+    'Prisma Data Modeling',
+    'Mobile State Management Patterns',
+    'Secure Authentication Flows'
+  ]
+isPublished: false
+---
+
+## Overview
+
+Payment Dashboard App is a robust mobile solution designed to simplify financial tracking for businesses and individuals. Built with a focus on security and real-time data availability, it provides users with instant insights into their transaction history and financial health through an intuitive, mobile-optimized interface.
+
+## What Users Can Do
+
+- **Visualize Finance:** Monitor income and expenses with interactive charts and graphs using React Native Chart Kit.
+- **Track Real-Time:** Receive instant updates on new transactions via WebSocket connections, ensuring data is always current.
+- **Manage Transactions:** Seamlessly add new payments, view detailed transaction histories, and filter records.
+- **Secure Access:** Log in securely using JWT-based authentication with encrypted token storage on the device.
+- **Role Management:** Access features based on user roles (Admin vs. Viewer), ensuring data integrity and security.
+- **User Administration:** Admins can manage user accounts and permissions directly from the app.
+
+## Tech Stack
+
+- **Frontend:** React Native (Expo), TypeScript, React Navigation
+- **Backend:** NestJS, specific modules for Auth, Payments, and Users
+- **Database:** PostgreSQL with Prisma ORM data modeling
+- **Real-time Engine:** Socket.io with NestJS Gateways for live event emission
+- **Security:** Passport.js strategies, Bcrypt hashing, and Expo Secure Store
+
+## Architecture & Challenges
+
+- **Real-time Synchronization:** One of the core challenges was ensuring the dashboard updates instantly when a payment is processed. This was solved by implementing a custom WebSocket Gateway in NestJS (`payments.gateway.ts`) that broadcasts events to connected clients, triggering immediate UI refreshes.
+- **Secure Authentication:** Managing persistent login sessions securely on a mobile device required integrating Expo Secure Store to handle JWT tokens safely, preventing unauthorized access while maintaining a smooth user experience.
+- **Data Visualization:** Integrating complex financial charts within a mobile view required careful configuration of `react-native-chart-kit` to ensure responsiveness and readability across different device sizes.
+
+## Future Plans
+
+- **Push Notifications:** Implement native push notifications for critical payment alerts even when the app is in the background.
+- **Advanced Export:** enhance reporting capabilities with PDF and Excel export options for detailed financial analysis.
+- **Multi-Currency Support:** Add dynamic currency conversion for international transaction handling.
