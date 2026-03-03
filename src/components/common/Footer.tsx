@@ -9,7 +9,15 @@ export default function Footer() {
       <div className="flex flex-col items-center justify-center">
         <p className="text-secondary text-center text-sm">
           {footerConfig.text} <b>{footerConfig.developer}</b> <br /> &copy;{' '}
-          {new Date().getFullYear()}. {footerConfig.copyright}
+          {new Date().getFullYear()}. {footerConfig.copyright}{' '}
+          <a
+            href={footerConfig.sourceCode}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary transition-colors hover:underline"
+          >
+            Source
+          </a>
         </p>
       </div>
     </Container>
