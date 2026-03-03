@@ -1,5 +1,5 @@
 export const footerConfig = {
-  developer: 'Dilpreet Singh',
-  text: 'Developed by',
-  copyright: 'All rights reserved.',
+  developer: 'New Delhi, India',
+  text: 'live from',
+  copyright: '',
 };
