@@ -1,6 +1,7 @@
 import Container from '@/components/common/Container';
 import About from '@/components/landing/About';
 // import CTA from '@/components/landing/CTA';
+import Education from '@/components/landing/Education';
 import Experience from '@/components/landing/Experience';
 import Github from '@/components/landing/Github';
 import Hero from '@/components/landing/Hero';
@@ -13,6 +14,7 @@ export default function page() {
     <Container className="min-h-screen py-16">
       <Hero />
       <Experience />
+      <Education />
       <Work />
       <About />
       <Github />
