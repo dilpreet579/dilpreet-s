@@ -104,64 +104,10 @@
     forceSleep = !forceSleep;
     nudge = false;
     localStorage.setItem('oneko:forceSleep', forceSleep);
+
     if (!forceSleep) {
       resetIdleAnimation();
       return;
-    }
-
-    // If Full App Display is on, sleep on its progress bar instead
-    const fullAppDisplay = document.getElementById('fad-progress');
-    if (fullAppDisplay) {
-      mousePosX = fullAppDisplay.getBoundingClientRect().right - 16;
-      mousePosY = fullAppDisplay.getBoundingClientRect().top - 12;
-      return;
-    }
-
-    // Get the far right and top of the progress bar
-    const progressBar = document.querySelector(
-      '.main-nowPlayingBar-center .playback-progressbar',
-    );
-    const progressBarRight = progressBar.getBoundingClientRect().right;
-    const progressBarTop = progressBar.getBoundingClientRect().top;
-    const progressBarBottom = progressBar.getBoundingClientRect().bottom;
-
-    // Make the cat sleep on the progress bar
-    mousePosX = progressBarRight - 16;
-    mousePosY = progressBarTop - 8;
-
-    // Get the position of the remaining time
-    const remainingTime = document.querySelector(
-      '.main-playbackBarRemainingTime-container',
-    );
-    const remainingTimeLeft = remainingTime.getBoundingClientRect().left;
-    const remainingTimeBottom = remainingTime.getBoundingClientRect().bottom;
-    const remainingTimeTop = remainingTime.getBoundingClientRect().top;
-
-    // Get the position of elapsed time
-    const elapsedTime = document.querySelector(
-      '.playback-bar__progress-time-elapsed',
-    );
-    const elapsedTimeRight = elapsedTime.getBoundingClientRect().right;
-    const elapsedTimeLeft = elapsedTime.getBoundingClientRect().left;
-
-    // If the remaining time is on top right of the progress bar, make the cat sleep to the a little bit to the left of the remaining time
-    // Theme compatibility
-    if (
-      remainingTimeLeft < progressBarRight &&
-      remainingTimeTop < progressBarBottom &&
-      progressBarTop - remainingTimeBottom < 32
-    ) {
-      mousePosX = remainingTimeLeft - 16;
-
-      // Comfy special case
-      if (Spicetify.Config.current_theme === 'Comfy') {
-        mousePosY = progressBarTop - 14;
-      }
-
-      // Move the cat to the left of elapsed time if it is too close to the remaining time (Nord theme)
-      if (remainingTimeLeft - elapsedTimeRight < 32) {
-        mousePosX = elapsedTimeLeft - 16;
-      }
     }
   }
 
@@ -465,7 +411,7 @@
         image-rendering: pixelated;
       }
       .oneko-variant-button:hover, .oneko-variant-button-selected {
-        background-color: var(--spice-main-elevated);
+        background-color: rgba(255, 255, 255, 0.2);
       }
       .oneko-variant-button:hover {
         background-position: var(--active-x) var(--active-y);
@@ -498,10 +444,8 @@
         div.classList.add('oneko-variant-button-selected');
       }
 
-      Spicetify.Tippy(div, {
-        ...Spicetify.TippyProps,
-        content: variantEnum[1],
-      });
+      // Spicetify.Tippy removed
+      div.title = variantEnum[1];
 
       return div;
     }
@@ -513,27 +457,79 @@
     return container;
   }
 
-  (async () => {
-    while (!Spicetify.Mousetrap) {
-      await new Promise((r) => setTimeout(r, 100));
+  function openPickerModal() {
+    const existing = document.getElementById('oneko-picker-overlay');
+    if (existing) {
+      existing.remove();
+      return;
     }
-    Spicetify.Mousetrap.bind('o n e k o', () => {
-      Spicetify.PopupModal.display({
-        title: 'Choose your neko',
-        // Render the modal new every time it is opened
-        content: pickerModal(),
-      });
-    });
-  })();
+
+    const overlay = document.createElement('div');
+    overlay.id = 'oneko-picker-overlay';
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    `;
+
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+      background: #1e1e1e;
+      padding: 24px;
+      border-radius: 12px;
+      max-width: 600px;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    `;
+
+    const title = document.createElement('h2');
+    title.textContent = 'Choose your neko';
+    title.style.margin = '0 0 20px 0';
+    title.style.fontSize = '1.5rem';
+    modal.appendChild(title);
+
+    const content = pickerModal();
+    modal.appendChild(content);
+
+    const closeNote = document.createElement('p');
+    closeNote.textContent = '(Click outside to close)';
+    closeNote.style.marginTop = '16px';
+    closeNote.style.opacity = '0.7';
+    closeNote.style.fontSize = '0.9rem';
+    modal.appendChild(closeNote);
+
+    overlay.onclick = (e) => {
+      if (e.target === overlay) {
+        overlay.remove();
+      }
+    };
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+  }
+
+  // Keyboard cheat code to open variant picker
+  let keyBuffer = '';
+  window.addEventListener('keydown', (e) => {
+    keyBuffer += e.key;
+    if (keyBuffer.length > 5) {
+      keyBuffer = keyBuffer.slice(-5);
+    }
+    if (keyBuffer === 'oneko') {
+      openPickerModal();
+    }
+  });
 
   if (parseLocalStorage('forceSleep', false)) {
-    while (
-      !document.querySelector(
-        '.main-nowPlayingBar-center .playback-progressbar',
-      )
-    ) {
-      await new Promise((r) => setTimeout(r, 100));
-    }
-    sleep();
+    forceSleep = true;
   }
 })();
