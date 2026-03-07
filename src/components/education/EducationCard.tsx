@@ -1,6 +1,11 @@
 import { type Education } from '@/config/Education';
+import { Link } from 'next-view-transitions';
 import Image from 'next/image';
 import React from 'react';
+
+import LinkedIn from '../svgs/LinkedIn';
+import Website from '../svgs/Website';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 interface EducationCardProps {
   education: Education;
@@ -19,7 +24,41 @@ export function EducationCard({ education }: EducationCardProps) {
             className="size-12 rounded-md border bg-white object-contain p-1 dark:bg-black"
           />
           <div className="flex flex-col">
-            <h3 className="text-lg font-bold">{education.institution}</h3>
+            <div className="flex items-center gap-2">
+              <h3 className="text-lg font-bold">{education.institution}</h3>
+              {education.website && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={education.website}
+                      target="_blank"
+                      className="text-muted-foreground hover:text-foreground size-4 transition-colors"
+                    >
+                      <Website />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Visit Website</p>
+                  </TooltipContent>
+                </Tooltip>
+              )}
+              {education.linkedin && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={education.linkedin}
+                      target="_blank"
+                      className="text-muted-foreground hover:text-foreground size-4 transition-colors"
+                    >
+                      <LinkedIn />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>View LinkedIn</p>
+                  </TooltipContent>
+                </Tooltip>
+              )}
+            </div>
             <p className="text-secondary text-base font-normal">
               {education.degree}
             </p>

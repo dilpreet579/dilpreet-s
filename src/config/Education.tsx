@@ -6,6 +6,8 @@ export interface Education {
   location: string;
   image: string;
   description?: string;
+  website?: string;
+  linkedin?: string;
 }
 
 export const educationList: Education[] = [
@@ -16,6 +18,9 @@ export const educationList: Education[] = [
     endDate: '2027 (ongoing)',
     location: 'Delhi, India',
     image: '/assets/nitd.png',
+    website: 'https://nitdelhi.ac.in/',
+    linkedin:
+      'https://www.linkedin.com/school/national-institute-of-technology-delhi/',
     description:
       'Focusing on Applied Machine Learning, Deep Learning, and Software Engineering. Actively translating theoretical foundations into production-ready solutions, from computer vision pipelines to agentic AI assistants. Outside the classroom, leading visual storytelling as a member of the Photography Club.',
   },
