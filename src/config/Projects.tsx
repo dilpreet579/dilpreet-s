@@ -1,7 +1,6 @@
 import Docker from '@/components/technologies/Docker';
 import Expo from '@/components/technologies/Expo';
 import FastAPI from '@/components/technologies/FastAPI';
-import Firebase from '@/components/technologies/Firebase';
 import FramerMotion from '@/components/technologies/FramerMotion';
 import Langflow from '@/components/technologies/Langflow';
 import MongoDB from '@/components/technologies/MongoDB';
@@ -18,8 +17,10 @@ import Selenium from '@/components/technologies/Selenium';
 import Shadcn from '@/components/technologies/Shadcn';
 import SocketIo from '@/components/technologies/SocketIo';
 import Streamlit from '@/components/technologies/Streamlit';
+import Supabase from '@/components/technologies/Supabase';
 import TailwindCss from '@/components/technologies/TailwindCss';
 import TypeScript from '@/components/technologies/TypeScript';
+import Zustand from '@/components/technologies/Zustand';
 import { Project } from '@/types/project';
 
 export const projects: Project[] = [
@@ -32,9 +33,10 @@ export const projects: Project[] = [
       { name: 'Expo', icon: <Expo key="expo" /> },
       { name: 'React Native', icon: <ReactIcon key="react-native" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Firebase', icon: <Firebase key="firebase" /> },
+      { name: 'Supabase', icon: <Supabase key="supabase" /> },
+      { name: 'Zustand', icon: <Zustand key="zustand" /> },
     ],
-    github: 'https://github.com/dilpreet579/unipool',
+    //github: 'https://github.com/dilpreet579/unipool',
     // live: '',
     details: true,
     projectDetailsPageSlug: '/projects/unipool',
