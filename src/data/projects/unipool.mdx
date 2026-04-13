@@ -1,6 +1,6 @@
 ---
 title: 'UniPool - University Carpooling Platform'
-description: 'An exclusive carpooling application designed for university students to share rides securely, currently in development with a focus on verified student matching.'
+description: 'An exclusive carpooling app for university students — featuring verified access, real-time ride matching, in-app messaging with live location sharing, a two-step seat approval system, and a post-ride ratings engine.'
 image: '/project/unipool.png'
 video: '/project/unipool.mp4'
 technologies:
@@ -8,64 +8,61 @@ technologies:
     'Expo (React Native)',
     'TypeScript',
     'Expo Router',
-    'Firebase Auth',
-    'Cloud Firestore',
+    'Supabase',
+    'Zustand',
+    'React Query',
     'react-native-maps',
+    'EAS',
   ]
-github: 'https://github.com/dilpreet579/unipool'
+github: ''
 live: ''
-timeline: 'January - March 2026'
+timeline: 'January - April 2026'
 role: 'Full Stack'
 team: '3'
 status: 'in development'
 featured: true
-challenges: ['Exclusive University Verification', 'Reliable Auth Persistence', 'Realtime Firestore Sync', 'Map + Bottom Sheet UX', 'Real-time Chat Architecture']
-learnings: ['Expo Router Navigation Patterns', 'Firebase Auth + Firestore', 'Theme Systems (Light/Dark)', 'Location Services Integration', 'Optimistic UI Updates']
+challenges:
+  [
+    'University-only Email Verification',
+    'Real-time Supabase WebSocket Architecture',
+    'Race-condition-free Auth State Management',
+    'React Query Cache Consistency Across Tabs',
+    'GPS Cold-Start Latency',
+    'Real-time Chat Architecture',
+  ]
+learnings:
+  [
+    'Expo Router File-based Navigation',
+    'Supabase Auth, Realtime & Storage',
+    'Zustand for Client State',
+    'React Query for Server State & Cache Invalidation',
+    'Location Services & Geofencing',
+  ]
 isPublished: true
 ---
 
 ## Overview
 
-*Last Updated - 13 March 2026*
+*Last Updated - 5 April 2026*
 
-**UniPool** is an exclusive mobile carpooling platform that prioritizes secure, cost-effective travel for university students. Now entering the **functional prototype** phase, the application solves daily commuting challenges by effectively matching students on similar routes, fostering community trust through strictly verified institutional access.
+**UniPool** is an exclusive mobile carpooling platform built for university students. Access is domain-locked to institutional email addresses, so every participant is a verified peer. The app covers the full ride lifecycle — posting and discovering nearby rides on an interactive map, a two-step seat-approval flow, real-time in-app messaging with live location sharing, a post-ride ratings engine, and a notifications feed.
 
-## Key Features (In Development)
+The backend runs on **Supabase** (PostgreSQL + Auth + Realtime + Storage), with **Zustand** for client auth state and **React Query** for all server data fetching and caching.
 
-### **Secure Ride System**
+## What's Done
 
-- **Find & Offer Rides**: Seamless interface for drivers to list empty seats and riders to find matching commutes (Map & List views).
-- **Exclusive Verification**: Domain-locked signup/login (university email) with email verification + profile gating.
-- **Cost Sharing**: Built-in mechanisms to equitably split commuting expenses.
-- **Schedule Syncing**: Matching algorithms based on class timings and daily departure schedules.
+- **Auth & Verification** — Domain-locked sign-up, email verification, and multi-guard route protection (login → profile setup → main app).
+- **Ride System** — Full ride creation wizard, interactive map with a 5 km radius filter, and a two-step host approval flow with seat and gender-constraint enforcement.
+- **Real-time Messaging** — 1-on-1 chat per ride via Supabase Realtime, with live location sharing, date separators, and an emergency call button surfaced from the chat header.
+- **Notifications & Unread Tracking** — Notification feed, bell badge, per-chat unread pills, inbox tab badge, and consistent mark-as-read via React Query cache invalidation.
+- **Ratings** — Post-ride star ratings with dismissal persistence, dynamic host score on profiles, and a star-distribution breakdown modal.
+- **Settings & Profile** — Edit profile, avatar upload (Supabase Storage), account & security screens, soft account deletion, and a full about/credits sheet.
+- **Performance** — React Query adopted across all screens (zero `useEffect`-based fetching), `expo-image` for memory+disk caching, and cached GPS positions for instant location features.
 
-### **Safety & Coordination Design**
+## What's Planned
 
-- **In-app Messaging (Implemented)**: Secure, real-time 1-on-1 chat implementation for passengers and drivers.
-- **Real-time Tracking (Planned)**: Live GPS updates for active carpools.
-- **Custom Pickups**: Flexible coordination for convenient campus drop-off and pickup points.
-- **Peer Trust Network**: Travel exclusively with verified peers from your own institution.
-
-## Development Progress
-
-### **Current Status**
-
-- **Functional Prototype**: Core flows (Auth, Post Ride, Find Ride, Chat) are operational.
-- **Real-time Architecture**: Firestore `onSnapshot` listeners drive the Chat, Inbox, and Activity feeds.
-- **UI/UX**: Polished screens for Chat, Activity (Past/Upcoming), and Ride Details Modal.
-
-### **Completed**
-
-- **Auth + Verification**: Firebase email/password auth, domain restriction, email verification checks.
-- **Profile Setup**: Firestore-backed profile creation + route guards (must be verified + profile complete).
-- **Rides Core**: Posting rides, viewing them on Map/List, and "Requesting Seat" service logic (`arrayUnion`).
-- **Messaging System**: Full real-time chat infrastructure with optimistic UI updates and an Inbox screen.
-- **Ride Details Modal**: `/modal` screen loading dynamic ride data.
-- **Activity Feed**: Segmented view for upcoming and past rides.
-- **Design System**: Central Light/Dark theme tokens via `ThemedView`/`ThemedText`.
-
-### **Next Up**
-
-- **Wiring UI Actions**: Connecting the "Request to Join" and "Message" buttons in the details modal to the backend services.
-- **Profile Data**: Replacing placeholder avatars with real user data from Firestore.
-- **Push Notifications**: Alerting users when their ride request is accepted or a new message arrives.
+- **Supabase RLS Policies** — Row-level security is not yet configured. This is the primary blocker before any public release.
+- **Push Notifications** — Background alerts when a ride request is accepted or a new message arrives.
+- **Payment Integration** — The payment methods screen is a UI stub; Stripe/Razorpay logic is not yet wired.
+- **Production EAS Profile** — Current build config only generates a preview `.apk`; a production `.aab` profile is needed for the Play Store.
+- **Error Boundaries** — No graceful fallback UI on fatal errors yet.
