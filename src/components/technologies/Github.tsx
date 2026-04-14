@@ -6,6 +6,7 @@ export default function Github({ className }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 128 128"
       className={className}
+      fill="currentColor"
     >
       <g fill="#181616">
         <path

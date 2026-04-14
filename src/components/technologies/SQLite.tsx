@@ -1,6 +1,6 @@
-export default function SQLite() {
+export default function SQLite({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 128 128">
+    <svg viewBox="0 0 128 128" className={className} fill="currentColor">
       <defs>
         <linearGradient
           id="sqlite-original-wordmark-a"
