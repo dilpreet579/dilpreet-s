@@ -1,6 +1,6 @@
-export default function Langflow({ className }: { className?: string }) {
+export default function Langflow() {
   return (
-    <svg viewBox="0 0 128 128" className={className} fill="currentColor">
+    <svg viewBox="0 0 128 128">
       <g transform="scale(3.5) translate(10,10)">
         <path
           fill="#000000"

@@ -1,6 +1,6 @@
-export default function Docker({ className }: { className?: string }) {
+export default function Docker() {
   return (
-    <svg viewBox="0 0 128 128" className={className} fill="currentColor">
+    <svg viewBox="0 0 128 128">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

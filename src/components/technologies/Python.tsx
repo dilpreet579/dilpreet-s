@@ -1,6 +1,6 @@
-export default function Python({ className }: { className?: string }) {
+export default function Python() {
   return (
-    <svg viewBox="0 0 128 128" className={className} fill="currentColor">
+    <svg viewBox="0 0 128 128">
       <linearGradient
         id="python-original-a"
         gradientUnits="userSpaceOnUse"
@@ -54,3 +54,4 @@ export default function Python({ className }: { className?: string }) {
     </svg>
   );
 }
+
