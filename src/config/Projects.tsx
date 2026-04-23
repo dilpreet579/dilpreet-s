@@ -1,7 +1,6 @@
 import Docker from '@/components/technologies/Docker';
 import Expo from '@/components/technologies/Expo';
 import FastAPI from '@/components/technologies/FastAPI';
-import FramerMotion from '@/components/technologies/FramerMotion';
 import Langflow from '@/components/technologies/Langflow';
 import MongoDB from '@/components/technologies/MongoDB';
 import NextJs from '@/components/technologies/NextJs';
@@ -37,28 +36,9 @@ export const projects: Project[] = [
       { name: 'Zustand', icon: <Zustand key="zustand" /> },
     ],
     //github: 'https://github.com/dilpreet579/unipool',
-    // live: '',
+    live: 'https://www.unipool.dev',
     details: true,
     projectDetailsPageSlug: '/projects/unipool',
-    isWorking: false,
-  },
-  {
-    title: 'RideShare - Premium Ride Platform',
-    description:
-      'A dark-mode first ride-sharing platform with AI driver negotiation, real-time simulation, and Leaflet map integration.',
-    image: '/project/rideshare.png',
-    technologies: [
-      { name: 'Next.js 14', icon: <NextJs key="nextjs" /> },
-      { name: 'React', icon: <ReactIcon key="react" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwind" /> },
-      { name: 'Framer Motion', icon: <FramerMotion key="framer-motion" /> },
-      { name: 'Shadcn UI', icon: <Shadcn key="shadcn" /> },
-    ],
-    github: 'https://github.com/dilpreet579/FJ-FE-R2-Dilpreet-NIT-Delhi',
-    live: 'https://fj-fe-r2-dilpreet-nit-delhi.vercel.app/',
-    details: true,
-    projectDetailsPageSlug: '/projects/rideshare',
     isWorking: true,
   },
   {

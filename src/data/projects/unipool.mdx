@@ -11,11 +11,12 @@ technologies:
     'Supabase',
     'Zustand',
     'React Query',
-    'react-native-maps',
-    'EAS',
+    'Next.js',
+    'Tailwind CSS',
+    'Resend',
   ]
 github: ''
-live: ''
+live: 'https://www.unipool.dev'
 timeline: 'January - April 2026'
 role: 'Full Stack'
 team: '3'
@@ -27,8 +28,8 @@ challenges:
     'Real-time Supabase WebSocket Architecture',
     'Race-condition-free Auth State Management',
     'React Query Cache Consistency Across Tabs',
-    'GPS Cold-Start Latency',
-    'Real-time Chat Architecture',
+    'Android Fabric New Architecture Crashes',
+    'Pre-Store APK Distribution Infrastructure',
   ]
 learnings:
   [
@@ -37,32 +38,43 @@ learnings:
     'Zustand for Client State',
     'React Query for Server State & Cache Invalidation',
     'Location Services & Geofencing',
+    'Next.js App Router & Server Actions',
+    'IP-based Rate Limiting & Email Delivery (Resend)',
+    'JSON-LD Structured Data & Full SEO Setup',
   ]
 isPublished: true
 ---
 
 ## Overview
 
-*Last Updated - 5 April 2026*
+*Last Updated - 23 April 2026*
 
-**UniPool** is an exclusive mobile carpooling platform built for university students. Access is domain-locked to institutional email addresses, so every participant is a verified peer. The app covers the full ride lifecycle — posting and discovering nearby rides on an interactive map, a two-step seat-approval flow, real-time in-app messaging with live location sharing, a post-ride ratings engine, and a notifications feed.
+**UniPool** is an exclusive mobile carpooling platform built for university students. Access is domain-locked to institutional email addresses, so every participant is a verified peer. The app covers the full ride lifecycle — posting and discovering nearby rides on an interactive map, a two-step seat-approval flow, real-time in-app messaging, a post-ride ratings engine, and a notifications feed.
 
 The backend runs on **Supabase** (PostgreSQL + Auth + Realtime + Storage), with **Zustand** for client auth state and **React Query** for all server data fetching and caching.
 
+The project also ships a **production-grade landing page** at [unipool.dev](https://www.unipool.dev) — built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4 — handling APK distribution, waitlist signups, and inbound contact before the Play Store and App Store submissions are approved.
+
 ## What's Done
 
-- **Auth & Verification** — Domain-locked sign-up, email verification, and multi-guard route protection (login → profile setup → main app).
+- **Auth & Verification** — Domain-locked sign-up (`@nitdelhi.ac.in`), email verification, and a multi-guard route protection system (login → profile setup → main app).
 - **Ride System** — Full ride creation wizard, interactive map with a 5 km radius filter, and a two-step host approval flow with seat and gender-constraint enforcement.
-- **Real-time Messaging** — 1-on-1 chat per ride via Supabase Realtime, with live location sharing, date separators, and an emergency call button surfaced from the chat header.
+- **Real-time Messaging** — 1-on-1 chat per ride via Supabase Realtime, with ride context in the chat header, date separators, long-press context menus, and an emergency call button surfaced from the header.
 - **Notifications & Unread Tracking** — Notification feed, bell badge, per-chat unread pills, inbox tab badge, and consistent mark-as-read via React Query cache invalidation.
 - **Ratings** — Post-ride star ratings with dismissal persistence, dynamic host score on profiles, and a star-distribution breakdown modal.
 - **Settings & Profile** — Edit profile, avatar upload (Supabase Storage), account & security screens, soft account deletion, and a full about/credits sheet.
 - **Performance** — React Query adopted across all screens (zero `useEffect`-based fetching), `expo-image` for memory+disk caching, and cached GPS positions for instant location features.
+- **Android Stability** — Fabric / New Architecture crash resolved: `MapView` isolation, `BottomSheetModalProvider` moved to root level, and `predictiveBackGestureEnabled: false` added to suppress the back-gesture crash.
+- **Landing Page** — Direct APK distribution with one-click download and QR code, waitlist capture with email confirmation via Resend, contact form with server validation and rate limiting, full SEO (Open Graph, Twitter cards, JSON-LD `SoftwareApplication` schema, `sitemap.xml`, `robots.txt`), and dark/light mode.
 
 ## What's Planned
 
-- **Supabase RLS Policies** — Row-level security is not yet configured. This is the primary blocker before any public release.
-- **Push Notifications** — Background alerts when a ride request is accepted or a new message arrives.
-- **Payment Integration** — The payment methods screen is a UI stub; Stripe/Razorpay logic is not yet wired.
-- **Production EAS Profile** — Current build config only generates a preview `.apk`; a production `.aab` profile is needed for the Play Store.
-- **Error Boundaries** — No graceful fallback UI on fatal errors yet.
+- **Supabase RLS Policies** — All 9 tables have zero row-level security. Any holder of the anon key can read, write, or delete any record. **This is the #1 blocker before any public release.**
+- **Hardcoded Credentials** — Supabase URL + key are committed to Git in `config/supabase.ts`; Google Maps key is hardcoded in `app.json`. Must be migrated to `EXPO_PUBLIC_*` env vars and EAS Secrets.
+- **Race Condition in Seat Approval** — `resolveRideRequest` performs a non-atomic read-modify-write on the `passengers` array. Needs a Postgres RPC with an atomic `array_append` + `CHECK(array_length(passengers,1) <= seats)` guard.
+- **Push Notifications** — `expo-notifications` is not installed. No device token registration or FCM integration; notification preference toggles currently have no server-side effect.
+- **Payment Integration** — The payment methods screen is a fully styled UI stub; Stripe/Razorpay logic is not yet wired.
+- **Production EAS Profile** — `eas.json` `production` profile is an empty object. Needs `buildType: "app-bundle"` for the Play Store; iOS requires `bundleIdentifier` + Apple Team ID.
+- **Error Boundaries** — No graceful fallback UI on fatal render crashes.
+- **Dual Auth Subscription** — `_layout.tsx` and `authStore.ts` both run independent `subscribeToAuthChanges()` listeners; Zustand should be the single source of truth end-to-end.
+- **N+1 Inbox Avatar Fetches** — `fetchUserChats` makes one `getUserProfile` HTTP call per thread instead of a single batched `.in()` query.
