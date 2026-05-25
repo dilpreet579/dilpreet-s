@@ -1,6 +1,6 @@
 ---
-title: 'UniPool - University Carpooling Platform'
-description: 'An exclusive carpooling app for university students — featuring verified access, real-time ride matching, in-app messaging with live location sharing, a two-step seat approval system, and a post-ride ratings engine.'
+title: 'UniPool - Campus Ride-Sharing App'
+description: 'A campus ride-sharing app built for NIT Delhi — officially launched in the presence of the Director and Registrar. Students, faculty, and staff find others heading the same way, share a cab or auto together, and split the fare. Verified members only, free to use, available on Android.'
 image: '/project/unipool.png'
 video: '/project/unipool.mp4'
 technologies:
@@ -17,64 +17,75 @@ technologies:
   ]
 github: ''
 live: 'https://www.unipool.dev'
-timeline: 'January - April 2026'
+timeline: 'February - May 2026'
 role: 'Full Stack'
 team: '3'
-status: 'in development'
+status: 'completed'
 featured: true
 challenges:
   [
-    'University-only Email Verification',
-    'Real-time Supabase WebSocket Architecture',
-    'Race-condition-free Auth State Management',
-    'React Query Cache Consistency Across Tabs',
-    'Android Fabric New Architecture Crashes',
-    'Pre-Store APK Distribution Infrastructure',
+    'Locking sign-up to verified campus members only',
+    'Building chat that updates instantly without refreshing',
+    'Preventing race conditions when multiple users join a ride simultaneously',
+    'Keeping notifications and unread counts in sync across the entire app',
+    'Resolving crashes on Android''s new rendering engine (Fabric)',
+    'Distributing the APK directly to users before Play Store approval',
   ]
 learnings:
   [
-    'Expo Router File-based Navigation',
-    'Supabase Auth, Realtime & Storage',
-    'Zustand for Client State',
-    'React Query for Server State & Cache Invalidation',
-    'Location Services & Geofencing',
-    'Next.js App Router & Server Actions',
-    'IP-based Rate Limiting & Email Delivery (Resend)',
-    'JSON-LD Structured Data & Full SEO Setup',
+    'Cross-platform mobile development with React Native & Expo',
+    'Full backend setup with Supabase — auth, database, real-time chat, and file storage',
+    'Managing app-wide state cleanly with Zustand and React Query',
+    'Mobile maps, location services, and geofencing',
+    'Building and shipping a production web app with Next.js',
+    'Transactional email delivery and IP-based rate limiting',
+    'SEO, structured data, and making a web app discoverable on search engines',
+    'Distributing a mobile app outside the Play Store',
   ]
 isPublished: true
 ---
 
 ## Overview
 
-*Last Updated - 23 April 2026*
+UniPool is a ride-sharing app built for the NIT Delhi campus community. The idea is simple: if you're heading to the metro, the railway station, or anywhere off campus, chances are someone else is going the same way. UniPool lets you find them, share the cab or auto together, and split the fare — no vehicle needed, just a destination.
 
-**UniPool** is an exclusive mobile carpooling platform built for university students. Access is domain-locked to institutional email addresses, so every participant is a verified peer. The app covers the full ride lifecycle — posting and discovering nearby rides on an interactive map, a two-step seat-approval flow, real-time in-app messaging, a post-ride ratings engine, and a notifications feed.
+The app was built from scratch by a three-person student team from the Department of Computer Science & Engineering at NIT Delhi, and officially launched in the presence of the Director and Registrar of the institute. It is free to use, available as an Android APK at [unipool.dev](https://www.unipool.dev), and open to students, faculty, and staff.
 
-The backend runs on **Supabase** (PostgreSQL + Auth + Realtime + Storage), with **Zustand** for client auth state and **React Query** for all server data fetching and caching.
+## The Problem It Solves
 
-The project also ships a **production-grade landing page** at [unipool.dev](https://www.unipool.dev) — built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4 — handling APK distribution, waitlist signups, and inbound contact before the Play Store and App Store submissions are approved.
+Getting around from a campus that isn't in the city centre is expensive when you're travelling alone. Taxis and autos to the metro, airport, or railway station cost significantly more per person than if you split with others heading the same way. The hard part has always been finding those people — coordinating over WhatsApp groups is messy, and public ride-sharing apps aren't built for a closed community.
 
-## What's Done
+UniPool solves this for the campus: everyone on the platform is verified through their institutional email, so you only ever travel with people from your own institute. The coordination — finding a trip, joining it, sorting out the details — all happens inside the app.
 
-- **Auth & Verification** — Domain-locked sign-up (`@nitdelhi.ac.in`), email verification, and a multi-guard route protection system (login → profile setup → main app).
-- **Ride System** — Full ride creation wizard, interactive map with a 5 km radius filter, and a two-step host approval flow with seat and gender-constraint enforcement.
-- **Real-time Messaging** — 1-on-1 chat per ride via Supabase Realtime, with ride context in the chat header, date separators, long-press context menus, and an emergency call button surfaced from the header.
-- **Notifications & Unread Tracking** — Notification feed, bell badge, per-chat unread pills, inbox tab badge, and consistent mark-as-read via React Query cache invalidation.
-- **Ratings** — Post-ride star ratings with dismissal persistence, dynamic host score on profiles, and a star-distribution breakdown modal.
-- **Settings & Profile** — Edit profile, avatar upload (Supabase Storage), account & security screens, soft account deletion, and a full about/credits sheet.
-- **Performance** — React Query adopted across all screens (zero `useEffect`-based fetching), `expo-image` for memory+disk caching, and cached GPS positions for instant location features.
-- **Android Stability** — Fabric / New Architecture crash resolved: `MapView` isolation, `BottomSheetModalProvider` moved to root level, and `predictiveBackGestureEnabled: false` added to suppress the back-gesture crash.
-- **Landing Page** — Direct APK distribution with one-click download and QR code, waitlist capture with email confirmation via Resend, contact form with server validation and rate limiting, full SEO (Open Graph, Twitter cards, JSON-LD `SoftwareApplication` schema, `sitemap.xml`, `robots.txt`), and dark/light mode.
+## How It Works
 
-## What's Planned
+**Post or join a trip.** Anyone can post a trip — set the destination, time, and a per-seat fare amount. Others heading the same way can see it on the app and request to join. The person who created the trip approves requests, so there's no obligation to accept everyone.
 
-- **Supabase RLS Policies** — All 9 tables have zero row-level security. Any holder of the anon key can read, write, or delete any record. **This is the #1 blocker before any public release.**
-- **Hardcoded Credentials** — Supabase URL + key are committed to Git in `config/supabase.ts`; Google Maps key is hardcoded in `app.json`. Must be migrated to `EXPO_PUBLIC_*` env vars and EAS Secrets.
-- **Race Condition in Seat Approval** — `resolveRideRequest` performs a non-atomic read-modify-write on the `passengers` array. Needs a Postgres RPC with an atomic `array_append` + `CHECK(array_length(passengers,1) <= seats)` guard.
-- **Push Notifications** — `expo-notifications` is not installed. No device token registration or FCM integration; notification preference toggles currently have no server-side effect.
-- **Payment Integration** — The payment methods screen is a fully styled UI stub; Stripe/Razorpay logic is not yet wired.
-- **Production EAS Profile** — `eas.json` `production` profile is an empty object. Needs `buildType: "app-bundle"` for the Play Store; iOS requires `bundleIdentifier` + Apple Team ID.
-- **Error Boundaries** — No graceful fallback UI on fatal render crashes.
-- **Dual Auth Subscription** — `_layout.tsx` and `authStore.ts` both run independent `subscribeToAuthChanges()` listeners; Zustand should be the single source of truth end-to-end.
-- **N+1 Inbox Avatar Fetches** — `fetchUserChats` makes one `getUserProfile` HTTP call per thread instead of a single batched `.in()` query.
+**Coordinate over chat.** Once you've joined a trip, you can sort out the pickup point, timing, and booking details in the in-app chat. No phone numbers are shared.
+
+**Travel and split.** Book the cab or auto together and split the fare equally. After the trip, everyone can rate the experience.
+
+## Key Features
+
+- **Verified members only** — Registration requires an NIT Delhi institutional email. Every member is confirmed to belong to the campus.
+- **Pink Mode** — Women can filter trips to find or post rides exclusively among women.
+- **Open to the whole campus** — Not just students. Faculty and institute staff can register and use the app too.
+- **In-app chat** — Coordinate trip details without sharing personal contact information.
+- **Ratings** — After each trip, members can rate each other, helping build trust across the community.
+- **Free, no platform cut** — The fare split is agreed between members. UniPool doesn't take a percentage.
+
+## The Launch
+
+UniPool was officially launched at the Director's office, NIT Delhi, in the presence of Prof. (Dr.) Ajay K Sharma, Director, and Prof. (Dr.) Hitesh Sharma, Registrar. The APK is available for direct download at [unipool.dev](https://www.unipool.dev) — no app store required. A Play Store and App Store release is in progress.
+
+![Official launch of UniPool at the Director's office, NIT Delhi](/project/launch_1.jpg)
+
+![The UniPool team at the official launch ceremony, NIT Delhi](/project/launch_2.jpg)
+
+## How It Was Built
+
+The app is built with **React Native** (via Expo), so a single codebase runs on both Android and iOS. **Supabase** powers the backend — handling user authentication, the database, real-time chat, and file storage (for profile photos). The real-time messaging uses Supabase's WebSocket layer, so messages appear instantly without refreshing.
+
+The landing page at [unipool.dev](https://www.unipool.dev) is a separate **Next.js** web app that handles APK distribution, waitlist sign-ups for the store releases, and inbound contact — fully optimised for search engines.
+
+On the engineering side, the biggest challenges were building a reliable authentication system that couldn't be bypassed with a non-institutional email, making real-time chat work correctly across all states of the app, and distributing the APK directly before Play Store approval — something that required setting up a custom download and verification flow.
