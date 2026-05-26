@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useHapticFeedback } from '@/hooks/use-haptic-feedback';
 import { cn } from '@/lib/utils';
 import { MessageCircle, X } from 'lucide-react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export type ChatPosition = 'bottom-right' | 'bottom-left';
 export type ChatSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
@@ -36,6 +36,12 @@ interface ExpandableChatProps extends React.HTMLAttributes<HTMLDivElement> {
   position?: ChatPosition;
   size?: ChatSize;
   icon?: React.ReactNode;
+  /** Controlled open state — when provided, component becomes controlled */
+  isOpen?: boolean;
+  /** Called when the toggle is clicked in controlled mode */
+  onOpenChange?: (open: boolean) => void;
+  /** Render custom toggle instead of the default round button */
+  customToggle?: (isOpen: boolean, toggle: () => void) => React.ReactNode;
 }
 
 const ExpandableChat: React.FC<ExpandableChatProps> = ({
@@ -43,16 +49,64 @@ const ExpandableChat: React.FC<ExpandableChatProps> = ({
   position = 'bottom-right',
   size = 'md',
   icon,
+  isOpen: controlledIsOpen,
+  onOpenChange,
+  customToggle,
   children,
   ...props
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const toggleChat = () => setIsOpen(!isOpen);
+  // Support both controlled and uncontrolled modes
+  const isOpen =
+    controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+
+  const closeChat = () => {
+    if (onOpenChange) {
+      onOpenChange(false);
+    } else {
+      setInternalIsOpen(false);
+    }
+  };
+
+  const toggleChat = () => {
+    const next = !isOpen;
+    if (onOpenChange) {
+      onOpenChange(next);
+    } else {
+      setInternalIsOpen(next);
+    }
+  };
+
+  // Close on click outside the entire widget (panel + toggle)
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(e.target as Node)
+      ) {
+        closeChat();
+      }
+    };
+
+    // Use setTimeout to avoid the same click that opened the chat from immediately closing it
+    const timer = setTimeout(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+    }, 0);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div
+      ref={wrapperRef}
       className={cn(
         `fixed ${chatConfig.positions[position]} z-50 hover:cursor-pointer`,
         className,
@@ -79,11 +133,15 @@ const ExpandableChat: React.FC<ExpandableChatProps> = ({
           <X className="h-4 w-4" />
         </Button>
       </div>
-      <ExpandableChatToggle
-        icon={icon}
-        isOpen={isOpen}
-        toggleChat={toggleChat}
-      />
+      {customToggle ? (
+        customToggle(isOpen, toggleChat)
+      ) : (
+        <ExpandableChatToggle
+          icon={icon}
+          isOpen={isOpen}
+          toggleChat={toggleChat}
+        />
+      )}
     </div>
   );
 };

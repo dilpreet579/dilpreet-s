@@ -1,6 +1,5 @@
 'use client';
 
-import ChatBubbleIcon from '@/components/svgs/ChatBubbleIcon';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -19,6 +18,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import SendIcon from '../svgs/SendIcon';
+import SpriteAvatar from './SpriteAvatar';
 
 interface Message {
   id: number;
@@ -31,7 +31,7 @@ interface Message {
 const initialMessages: Message[] = [
   {
     id: 1,
-    text: "Hello! I'm Dilpreet's AI Assistant. How can I help you?",
+    text: "Hey! I'm Dilpreet. Ask me anything about my work, projects, or experience",
     sender: 'bot',
     timestamp: '',
   },
@@ -41,6 +41,7 @@ const ChatBubble: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [newMessage, setNewMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { triggerHaptic, isMobile } = useHapticFeedback();
 
@@ -57,7 +58,7 @@ const ChatBubble: React.FC = () => {
               }),
             }
           : msg,
-      )
+      ),
     );
   }, []); // Run only on mount
 
@@ -266,7 +267,11 @@ const ChatBubble: React.FC = () => {
       className="mt-4 ml-4 max-h-[95vh] max-w-[calc(100vw-2rem)] hover:cursor-pointer sm:max-w-[calc(100vw-4rem)] md:max-w-xl"
       position="bottom-right"
       size="lg"
-      icon={<ChatBubbleIcon className="h-6 w-6" />}
+      isOpen={isOpen}
+      onOpenChange={setIsOpen}
+      customToggle={(open, toggle) => (
+        <SpriteAvatar isTalking={isLoading} isOpen={open} onClick={toggle} />
+      )}
     >
       <ExpandableChatHeader>
         <div className="flex items-center space-x-3">
@@ -275,9 +280,7 @@ const ChatBubble: React.FC = () => {
             <AvatarFallback>AI</AvatarFallback>
           </Avatar>
           <div>
-            <h3 className="text-sm font-semibold">
-              {heroConfig.name}&apos;s Portfolio Assistant
-            </h3>
+            <h3 className="text-sm font-semibold">{heroConfig.name}</h3>
             <div className="text-muted-foreground text-xs">
               <div className="flex items-center gap-1">
                 <div className="h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
