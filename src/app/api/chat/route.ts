@@ -1,4 +1,4 @@
-import { systemPrompt } from '@/config/ChatPrompt';
+import { getSystemPrompt } from '@/config/ChatPrompt';
 import { createParser } from 'eventsource-parser';
 import { NextRequest, NextResponse } from 'next/server';
 import * as z from 'zod';
@@ -144,7 +144,7 @@ export async function POST(request: NextRequest) {
     const requestBody = {
       contents: [
         {
-          parts: [{ text: systemPrompt }],
+          parts: [{ text: getSystemPrompt() }],
           role: 'user',
         },
         {

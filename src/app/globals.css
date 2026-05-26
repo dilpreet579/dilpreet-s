@@ -266,3 +266,49 @@
 .prose h4 {
   font-size: calc(var(--blog-font-size) * 1.25);
 }
+
+/* ============================================================
+   8-bit Sprite Avatar Animation
+   Sprite sheet: 527×384px | 5 frames per row | 3 rows
+   Display size: 80×97px (0.759x scale)
+   BG size:      400×292px
+   Rows:         IDLE @ y=0  |  WAVE @ y=-97px  |  TALK @ y=-194px
+   ============================================================ */
+
+.sprite-avatar {
+  width: 80px;
+  height: 97px;
+  background-image: url('/assets/sprite-sheet.png');
+  background-size: 400px 292px;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  will-change: background-position;
+}
+
+.sprite-idle {
+  animation: sprite-idle 1.5s steps(5) infinite;
+}
+
+.sprite-wave {
+  animation: sprite-wave 0.7s steps(5) infinite;
+}
+
+.sprite-talk {
+  animation: sprite-talk 0.45s steps(5) infinite;
+}
+
+@keyframes sprite-idle {
+  from { background-position: 0px 0px; }
+  to   { background-position: -400px 0px; }
+}
+
+@keyframes sprite-wave {
+  from { background-position: 0px -97px; }
+  to   { background-position: -400px -97px; }
+}
+
+@keyframes sprite-talk {
+  from { background-position: 0px -194px; }
+  to   { background-position: -400px -194px; }
+}
