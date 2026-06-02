@@ -10,14 +10,14 @@ export default function Footer() {
         <p className="text-secondary text-center text-sm">
           {footerConfig.text} <b>{footerConfig.developer}</b> <br /> &copy;{' '}
           {new Date().getFullYear()}. {footerConfig.copyright}{' '}
-          <a
+          {/* <a
             href={footerConfig.sourceCode}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary transition-colors hover:underline"
           >
             Source
-          </a>
+          </a> */}
         </p>
       </div>
     </Container>

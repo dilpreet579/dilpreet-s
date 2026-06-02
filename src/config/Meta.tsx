@@ -19,7 +19,7 @@ export const siteConfig = {
     /\/$/,
     '',
   ),
-  ogImage: '/meta/opengraph-image.png',
+  ogImage: '/meta/og-img.png',
   author: {
     name: about.name,
     twitter: '@dp100x',
@@ -60,7 +60,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'React Native',
       'software engineer',
     ],
-    ogImage: '/meta/hero.png',
+    ogImage: '/meta/og-img.png',
     twitterCard: 'summary_large_image',
   },
 
@@ -76,7 +76,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'freelance developer',
       'full-stack engineer',
     ],
-    ogImage: '/assets/logo.png',
+    ogImage: '/meta/og-img.png',
     twitterCard: 'summary',
   },
 
@@ -92,7 +92,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'full-stack roles',
       'employment history',
     ],
-    ogImage: '/meta/work.png',
+    ogImage: '/meta/og-img.png',
     twitterCard: 'summary_large_image',
   },
 
@@ -108,7 +108,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'React Native apps',
       'web development portfolio',
     ],
-    ogImage: '/meta/projects.png',
+    ogImage: '/meta/og-img.png',
     twitterCard: 'summary_large_image',
   },
 
@@ -123,7 +123,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'AI engineer qualifications',
       'download resume',
     ],
-    ogImage: '/meta/resume.png',
+    ogImage: '/meta/og-img.png',
     twitterCard: 'summary',
   },
 
@@ -138,7 +138,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'software engineer milestones',
       'achievements',
     ],
-    ogImage: '/meta/opengraph-image.png',
+    ogImage: '/meta/og-img.png',
     twitterCard: 'summary_large_image',
   },
 
@@ -153,7 +153,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'AI certifications',
       'professional credentials',
     ],
-    ogImage: '/meta/opengraph-image.png',
+    ogImage: '/meta/og-img.png',
     twitterCard: 'summary',
   },
 };
