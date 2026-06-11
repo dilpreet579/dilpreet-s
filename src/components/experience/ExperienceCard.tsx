@@ -31,10 +31,10 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
             alt={experience.company}
             width={100}
             height={100}
-            className="size-12 rounded-md"
+            className="size-12 shrink-0 rounded-md"
           />
           <div className="flex flex-col">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <h3
                 className={cn(
                   'text-lg font-bold',

@@ -139,9 +139,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </CardContent>
 
       {project.details && (
-        <CardFooter className="flex justify-between p-6 pt-0">
+        <CardFooter className="flex flex-wrap items-center justify-between gap-4 p-6 pt-0">
           <div
-            className={`flex items-center gap-1 rounded-md px-2 py-1 text-xs ${
+            className={`flex w-fit items-center gap-1 rounded-md px-2 py-1 text-xs ${
               project.isWorking
                 ? 'border-green-300 bg-green-500/10'
                 : 'border-red-300 bg-red-500/10'
