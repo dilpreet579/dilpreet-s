@@ -1,3 +1,5 @@
+import DRF from '@/components/technologies/DRF';
+import Django from '@/components/technologies/Django';
 import Docker from '@/components/technologies/Docker';
 import GCP from '@/components/technologies/GCP';
 import Neo4j from '@/components/technologies/Neo4j';
@@ -7,6 +9,7 @@ import PostgreSQL from '@/components/technologies/PostgreSQL';
 import Postman from '@/components/technologies/Postman';
 import Python from '@/components/technologies/Python';
 import ReactIcon from '@/components/technologies/ReactIcon';
+import Redis from '@/components/technologies/Redis';
 import TypeScript from '@/components/technologies/TypeScript';
 
 export interface Technology {
@@ -33,6 +36,49 @@ export interface Experience {
 }
 
 export const experiences: Experience[] = [
+  {
+    isCurrent: true,
+    isBlur: false,
+    company: 'FischerJordan',
+    position: 'SDE Intern',
+    location: 'New York, United States (Remote)',
+    image: '/company/fischerjordan.jpg',
+    description: [
+      'Contributing to engineering projects and software development efforts.',
+    ],
+    startDate: 'Jun 2026',
+    endDate: 'Present',
+    technologies: [
+      {
+        name: 'Python',
+        href: 'https://www.python.org/',
+        icon: <Python />,
+      },
+      {
+        name: 'Django',
+        href: 'https://www.djangoproject.com/',
+        icon: <Django />,
+      },
+      {
+        name: 'Django REST Framework',
+        href: 'https://www.django-rest-framework.org/',
+        icon: <DRF />,
+      },
+      {
+        name: 'Redis',
+        href: 'https://redis.io/',
+        icon: <Redis />,
+      },
+      {
+        name: 'PostgreSQL',
+        href: 'https://www.postgresql.org/',
+        icon: <PostgreSQL />,
+      },
+    ],
+    website: 'https://fischerjordan.com/',
+    linkedin: 'https://www.linkedin.com/company/fischerjordan/',
+    x: 'https://twitter.com/fischerjordanNY',
+  },
   {
     isCurrent: false,
     isBlur: false,
