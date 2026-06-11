@@ -29,7 +29,7 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: 'Dilpreet Singh',
-  title: 'Full-Stack AI Engineer',
+  title: 'Software Engineer',
   avatar: '/assets/logo.png',
 
   // Start Time
@@ -66,7 +66,9 @@ export const heroConfig = {
 
   // Description Configuration
   description: {
-    template: `I build scalable web apps and intelligent AI models using {skills:0}, {skills:1}, {skills:2}, {skills:3} and {skills:4}Passionate about merging Machine Learning with user-centric development.`,
+    template: `I build products at the intersection of software engineering and AI.
+
+Computer Science student at NIT Delhi, currently working as a SDE Intern at FischerJordan. Interested in backend systems, machine learning, and developer tools.`,
   },
 
   // Buttons Configuration

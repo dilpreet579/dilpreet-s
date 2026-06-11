@@ -52,7 +52,7 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
         </head>
-        <body className={`font-hanken-grotesk lowercase antialiased`}>
+        <body className={`font-hanken-grotesk antialiased`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

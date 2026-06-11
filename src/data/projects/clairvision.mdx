@@ -43,92 +43,104 @@ isPublished: true
 
 ## Overview
 
-*Last Updated - 02 March 2026*
+Event photographers often return with thousands of images from a single event. Sorting through them manually is slow, repetitive, and error-prone. Blurry photos need to be removed, duplicates need to be grouped, and finding all photos of a particular person can take hours.
 
-**ClairVision** is a backend-first AI system designed to automate large-scale image curation and visual search. The system is architected as a scalable ingestion and retrieval engine capable of indexing thousands of remote images without permanently storing originals.
+ClairVision was built to automate that workflow.
 
-Images are streamed through asynchronous workers, embeddings are generated using CLIP and FaceNet, and vectors are stored in PostgreSQL via pgvector. A similarity graph is then constructed to enable instant clustering, duplicate grouping, and cross-event identity matching.
+The system analyzes large image collections, generates visual and facial embeddings, and transforms raw photo dumps into a searchable archive. Instead of scrolling through thousands of files, users can instantly find similar images, identify duplicate shots, and retrieve photos featuring the same person across multiple events.
 
-The objective is to transform raw event photography into a structured, searchable visual database powered by vector similarity.
+---
+
+## The Problem
+
+Most event photography workflows still rely heavily on manual review.
+
+Photographers often spend more time organizing images than capturing them. Large albums contain duplicate shots, near-identical frames, out-of-focus photos, and images spread across multiple events. Traditional folder structures make it difficult to discover relationships between images or quickly retrieve specific content.
+
+ClairVision approaches the problem as a search and retrieval challenge rather than a storage challenge.
 
 ---
 
 ## Key Features
 
-### Distributed Image Ingestion Pipeline
+### Automated Photo Organization
 
-- **Streaming-Based Processing**: Indexes 3000+ remote images without storing raw originals.
-- **Async Worker Architecture**: Queue-driven embedding extraction and metadata generation.
-- **Fault-Tolerant Pipeline**: Retry-safe ingestion and background processing via Redis-backed workers.
-- **Scalable Design**: Ready for horizontal scaling across larger datasets.
+* Detects visually similar images
+* Groups near-duplicate photographs
+* Enables large-scale photo clustering
+* Reduces manual sorting effort
 
----
+### Instant Visual Search
 
-### Vector Search & Similarity Graph
+* Search using image similarity instead of filenames
+* Retrieve visually related images in milliseconds
+* Explore image collections through semantic similarity
 
-- **CLIP ViT-L/14 Embeddings** for semantic image similarity.
-- **FaceNet (InceptionResnetV1)** for identity-based embeddings.
-- **pgvector + FAISS Indexing** for efficient cosine similarity search.
-- **Similarity Graph Construction** enabling near-duplicate clustering and visual grouping.
+### Face-Based Retrieval
 
----
+* Find photos containing the same person
+* Match identities across independent event collections
+* Enable cross-event discovery workflows
 
-### High-Performance Retrieval System
+### Built for Scale
 
-- **Low-Latency Vector Queries** via indexed nearest-neighbour search.
-- **Signed On-Demand Streaming** for high-resolution previews.
-- **Cross-Event Identity Matching** across independent image collections.
-- **Instant Visual Clustering** powered by similarity thresholds.
-
----
-
-### Interactive Visualization Layer
-
-- **WebGL-Powered 3D Mesh UI**
-- Embedding cluster exploration
-- Real-time backend similarity queries
-- Graph-based visual navigation
+* Streams remote images without permanently storing originals
+* Processes thousands of images asynchronously
+* Supports large-scale vector indexing and retrieval
 
 ---
 
-## Architecture Overview
+## How It Works
 
-1. Remote image ingestion
-2. Async worker queue processing
-3. Embedding extraction (CLIP + FaceNet)
-4. Vector storage in PostgreSQL (pgvector)
-5. Similarity graph generation
-6. FAISS / cosine similarity querying
-7. API-driven search and streaming
+1. Images are streamed from remote sources.
+2. Background workers process and analyze each image.
+3. CLIP generates visual embeddings for semantic similarity.
+4. FaceNet extracts identity embeddings for facial matching.
+5. Embeddings are stored and indexed using pgvector and FAISS.
+6. Similarity graphs are generated to identify related images.
+7. Search APIs expose fast visual and identity-based retrieval.
+
+---
+
+## Architecture
+
+The system follows a backend-first design focused on scalability and retrieval performance.
+
+* Python-based computer vision pipeline
+* Redis-backed asynchronous worker architecture
+* PostgreSQL + pgvector for vector storage
+* FAISS for nearest-neighbour search
+* REST APIs powering retrieval workflows
+* WebGL visualization layer for cluster exploration
+
+Rather than optimizing for image storage, the architecture is optimized for search, discovery, and large-scale image organization.
 
 ---
 
-## Development Progress
-
-### Current Status
-
-- Fully operational ingestion + embedding pipeline
-- pgvector-based vector indexing implemented
-- Redis-backed async worker system running
-- Backend similarity search APIs live
-- Cross-event identity matching enabled
-
----
+## Current Progress
 
 ### Completed
 
-- 3000+ image indexing via streaming ingestion
-- Similarity graph construction
-- Visual + identity search endpoints
-- Signed streaming system for previews
-- Backend-first ML architecture
+* Image ingestion pipeline
+* CLIP and FaceNet embedding generation
+* Vector indexing with pgvector
+* Similarity graph construction
+* Visual search APIs
+* Cross-event identity matching
+* Streaming-based image retrieval
+
+### In Progress
+
+* Scaling beyond 10,000+ images
+* Distributed worker orchestration
+* Hybrid visual + identity ranking
+* Dockerized deployment pipeline
+* Public demonstration interface
 
 ---
 
-### Next Up
+## Key Takeaways
 
-- Horizontal scaling for 10k+ images
-- Distributed worker orchestration
-- Hybrid vector search (semantic + identity fusion)
-- Dockerized deployment + CI/CD
-- Public demo interface
+ClairVision has been my deepest exploration into computer vision infrastructure, vector search systems, and backend-focused machine learning engineering.
+
+Beyond the machine learning models themselves, the project has been an exercise in designing systems that can efficiently process, organize, and retrieve information at scale.

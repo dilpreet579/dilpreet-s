@@ -119,9 +119,43 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
         </div>
       </div>
 
+      {/* Description */}
+      <div className="text-secondary flex flex-col">
+        {experience.description.map(
+          (description: string, descIndex: number) => {
+            let bullet = '• ';
+            let indent = '';
+            let text = description;
+
+            if (description.startsWith('-')) {
+              bullet = '◦ ';
+              indent = 'ml-4';
+              text = description.slice(1).trim();
+            } else if (description.startsWith('#')) {
+              bullet = '';
+              indent = 'mt-2 mb-1 text-black dark:text-white font-semibold';
+              text = description.slice(1).trim();
+            } else if (description.startsWith('~')) {
+              bullet = '';
+              text = description.slice(1).trim();
+            }
+
+            return (
+              <p
+                key={descIndex}
+                className={indent}
+                dangerouslySetInnerHTML={{
+                  __html: `${bullet}${parseDescription(text)}`,
+                }}
+              />
+            );
+          },
+        )}
+      </div>
+
       {/* Technologies */}
       <div>
-        <h4 className="text-md mt-4 mb-2 font-semibold">Technologies</h4>
+        <h4 className="text-md mt-2 mb-2 font-semibold">Technologies</h4>
         <div className="flex flex-wrap gap-2">
           {experience.technologies.map((technology, techIndex: number) => (
             <Skill
@@ -133,20 +167,6 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
             </Skill>
           ))}
         </div>
-      </div>
-
-      {/* Description */}
-      <div className="text-secondary flex flex-col">
-        {experience.description.map(
-          (description: string, descIndex: number) => (
-            <p
-              key={descIndex}
-              dangerouslySetInnerHTML={{
-                __html: `• ${parseDescription(description)}`,
-              }}
-            />
-          ),
-        )}
       </div>
     </div>
   );

@@ -22,6 +22,6 @@ export const educationList: Education[] = [
     linkedin:
       'https://www.linkedin.com/school/national-institute-of-technology-delhi/',
     description:
-      'Focusing on Applied Machine Learning, Deep Learning, and Software Engineering. Actively translating theoretical foundations into production-ready solutions, from computer vision pipelines to agentic AI assistants. Outside the classroom, leading visual storytelling as a member of the Photography Club.',
+      "At NIT Delhi, I've explored software engineering, machine learning, and AI through coursework, internships, and hands-on projects. From AI-powered applications to full-stack products, I enjoy turning ideas into systems people can use. Beyond engineering, I'm actively involved in the Photography Club, capturing and documenting campus life.",
   },
 ];

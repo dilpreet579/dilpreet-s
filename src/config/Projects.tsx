@@ -26,7 +26,7 @@ export const projects: Project[] = [
   {
     title: 'UniPool - University Carpooling Platform',
     description:
-      'An exclusive carpooling application designed for university students to share rides securely, currently in development with a focus on verified student matching.',
+      'A ride-sharing app built for NIT Delhi that helps students, faculty, and staff share cabs, split fares, and travel safely within a verified campus community.',
     image: '/project/unipool.png',
     technologies: [
       { name: 'Expo', icon: <Expo key="expo" /> },
@@ -44,7 +44,7 @@ export const projects: Project[] = [
   {
     title: 'ClairVision - AI-Powered Event Photo Curation System',
     description:
-      'Built an AI-powered computer vision pipeline for event photo curation, automating duplicate detection, blur filtering.',
+      'Automatically filters blurry photos, removes duplicates, and enables instant visual search across large event photo collections.',
     image: '/project/clairvision.png',
     technologies: [
       { name: 'Python', icon: <Python key="python" /> },
@@ -58,42 +58,21 @@ export const projects: Project[] = [
     isWorking: false,
   },
   {
-    title: 'Real-Time Bot Detection System (Walmart Sparkathon 2025)',
+    title: 'VocaAI - AI Receptionist for Businesses',
     description:
-      'Built a real-time ML system to detect and block malicious bot purchases during high-demand holiday sales.',
-    image: '/project/botdetection.png',
+      'An AI receptionist that answers calls, handles customer queries, and helps businesses stay available even outside working hours.',
+    image: '/project/vocaai.png',
     technologies: [
-      { name: 'Python', icon: <Python key="python" /> },
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'FastAPI', icon: <FastAPI key="fastapi" /> },
-      { name: 'Streamlit', icon: <Streamlit key="streamlit" /> },
-      { name: 'Selenium', icon: <Selenium key="selenium" /> },
-      { name: 'Puppeteer', icon: <Puppeteer key="puppeteer" /> },
-    ],
-    github: 'https://github.com/dilpreet579/Real-time-Grinch-Bots-Detection',
-    live: 'https://bot-detector-model-dashboard.onrender.com/',
-    details: true,
-    projectDetailsPageSlug: '/projects/bot-detection',
-    isWorking: true,
-  },
-  {
-    title: 'Event Check-In App',
-    description:
-      'A full-stack real-time event engagement platform where users can browse upcoming events, check in, and see live attendee updates.',
-    image: '/project/event-checkin.png',
-    technologies: [
-      { name: 'React Native', icon: <ReactIcon key="react-native" /> },
-      { name: 'Expo', icon: <Expo key="expo" /> },
       { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
-      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
-      { name: 'Prisma', icon: <Prisma key="prisma" /> },
-      { name: 'Socket.io', icon: <SocketIo key="socketio" /> },
-      { name: 'Docker', icon: <Docker key="docker" /> },
+      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
+      { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
+      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
+      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwind" /> },
     ],
-    github: 'https://github.com/dilpreet579/event-checkin-app',
-    // live: '',
+    github: 'https://github.com/dilpreet579/voca-ai',
+    //live: 'https://voca-ai.vercel.app/',
     details: true,
-    projectDetailsPageSlug: '/projects/event-checkin',
+    projectDetailsPageSlug: '/projects/vocaai',
     isWorking: true,
   },
   {
@@ -118,6 +97,45 @@ export const projects: Project[] = [
     isWorking: true,
   },
   {
+    title: 'Event Check-In App',
+    description:
+      'A full-stack real-time event engagement platform where users can browse upcoming events, check in, and see live attendee updates.',
+    image: '/project/event-checkin.png',
+    technologies: [
+      { name: 'React Native', icon: <ReactIcon key="react-native" /> },
+      { name: 'Expo', icon: <Expo key="expo" /> },
+      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
+      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
+      { name: 'Prisma', icon: <Prisma key="prisma" /> },
+      { name: 'Socket.io', icon: <SocketIo key="socketio" /> },
+      { name: 'Docker', icon: <Docker key="docker" /> },
+    ],
+    github: 'https://github.com/dilpreet579/event-checkin-app',
+    // live: '',
+    details: true,
+    projectDetailsPageSlug: '/projects/event-checkin',
+    isWorking: true,
+  },
+  {
+    title: 'Real-Time Bot Detection System (Walmart Sparkathon 2025)',
+    description:
+      'Built a real-time ML system to detect and block malicious bot purchases during high-demand holiday sales.',
+    image: '/project/botdetection.png',
+    technologies: [
+      { name: 'Python', icon: <Python key="python" /> },
+      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
+      { name: 'FastAPI', icon: <FastAPI key="fastapi" /> },
+      { name: 'Streamlit', icon: <Streamlit key="streamlit" /> },
+      { name: 'Selenium', icon: <Selenium key="selenium" /> },
+      { name: 'Puppeteer', icon: <Puppeteer key="puppeteer" /> },
+    ],
+    github: 'https://github.com/dilpreet579/Real-time-Grinch-Bots-Detection',
+    live: 'https://bot-detector-model-dashboard.onrender.com/',
+    details: true,
+    projectDetailsPageSlug: '/projects/bot-detection',
+    isWorking: true,
+  },
+  {
     title: 'Payment Dashboard App',
     description:
       'A comprehensive, real-time payment management application featuring secure authentication and live transaction tracking.',
@@ -134,24 +152,6 @@ export const projects: Project[] = [
     // live: '',
     details: true,
     projectDetailsPageSlug: '/projects/payments-dashboard',
-    isWorking: true,
-  },
-  {
-    title: 'VocaAI - AI Receptionist for Businesses',
-    description:
-      'Launched an AI-powered virtual receptionist, enabling 24/7 customer support and call automation.',
-    image: '/project/vocaai.png',
-    technologies: [
-      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwind" /> },
-    ],
-    github: 'https://github.com/dilpreet579/voca-ai',
-    live: 'https://voca-ai.vercel.app/',
-    details: true,
-    projectDetailsPageSlug: '/projects/vocaai',
     isWorking: true,
   },
 ];
