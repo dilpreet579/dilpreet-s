@@ -7,13 +7,13 @@ import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
 
 const photos = [
-  { src: '/photography/1.jpeg', alt: 'Campus moment' },
+  { src: '/photography/7.JPG', alt: 'Campus moment' },
   { src: '/photography/2.JPG', alt: 'Campus moment' },
   { src: '/photography/3.JPG', alt: 'Campus moment' },
   { src: '/photography/4.JPG', alt: 'Campus moment' },
   { src: '/photography/5.jpg', alt: 'Campus moment' },
   { src: '/photography/6.jpg', alt: 'Campus moment' },
-  { src: '/photography/7.JPG', alt: 'Campus moment' },
+  { src: '/photography/1.jpeg', alt: 'Campus moment' },
   { src: '/photography/8.jpeg', alt: 'Campus moment' },
 ];
 

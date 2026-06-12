@@ -3,7 +3,6 @@ import Container from '@/components/common/Container';
 // import CTA from '@/components/landing/CTA';
 import Education from '@/components/landing/Education';
 import Experience from '@/components/landing/Experience';
-import Github from '@/components/landing/Github';
 import Hero from '@/components/landing/Hero';
 import Journey from '@/components/landing/Journey';
 import Work from '@/components/landing/Projects';
@@ -18,7 +17,6 @@ export default function page() {
       <Education />
       <Work />
       <ThroughMyLens />
-      <Github />
       {/* <CTA /> // Removed CTA for now, can be added back later if needed */}
       <Journey />
     </Container>
