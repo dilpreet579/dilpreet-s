@@ -12,9 +12,8 @@ export interface PageMeta {
 // Base site configuration — trailing slash stripped to prevent canonical double-slash
 export const siteConfig = {
   name: heroConfig.name,
-  title: 'Dilpreet Singh | Full-Stack AI Engineer Portfolio',
-  description:
-    'Portfolio of Dilpreet Singh — Full-Stack AI Engineer specialising in React, Next.js, React Native, Python and intelligent systems.',
+  title: `${heroConfig.name} | ${heroConfig.title} Portfolio`,
+  description: `Portfolio of ${heroConfig.name} — ${heroConfig.title} building products at the intersection of software engineering and AI.`,
   url: (process.env.NEXT_PUBLIC_URL || 'http://localhost:3000').replace(
     /\/$/,
     '',
@@ -30,14 +29,15 @@ export const siteConfig = {
   keywords: [
     'Dilpreet Singh',
     'dilpreet singh portfolio',
-    'full-stack AI engineer',
-    'AI developer India',
+    'software engineer',
+    'SDE',
+    'backend systems',
+    'machine learning',
+    'developer tools',
     'React developer',
     'Next.js developer',
     'TypeScript developer',
     'Python developer',
-    'React Native developer',
-    'Node.js developer',
     'software engineer India',
     'web development',
     'portfolio',
@@ -49,10 +49,10 @@ export const pageMetadata: Record<string, PageMeta> = {
   // Home
   '/': {
     title: 'home / dilpreet',
-    description: `${about.description} Explore my projects, work experience, and technical expertise in React, Next.js, Python, and AI systems.`,
+    description: `${about.description} Explore my projects, work experience, and technical expertise in backend systems, machine learning, and developer tools.`,
     keywords: [
       'Dilpreet Singh',
-      'full-stack AI engineer',
+      'software engineer',
       'developer portfolio',
       'React developer India',
       'Next.js',
@@ -74,7 +74,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'hire developer India',
       'collaboration',
       'freelance developer',
-      'full-stack engineer',
+      'software engineer',
     ],
     ogImage: '/meta/og-img.png',
     twitterCard: 'summary',
@@ -84,12 +84,12 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/work-experience': {
     title: 'work / dilpreet',
     description:
-      'Professional work experience of Dilpreet Singh — roles, companies, and achievements in full-stack and AI engineering.',
+      'Professional work experience of Dilpreet Singh — roles, companies, and achievements as a Software Engineer.',
     keywords: [
       'Dilpreet Singh work experience',
       'software developer career',
-      'AI engineer experience',
-      'full-stack roles',
+      'software engineer experience',
+      'SDE roles',
       'employment history',
     ],
     ogImage: '/meta/og-img.png',
@@ -100,12 +100,12 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/projects': {
     title: 'projects / dilpreet',
     description:
-      'Explore projects by Dilpreet Singh across web development, mobile apps, and AI systems — built with React, Next.js, Python, and more.',
+      'Explore projects by Dilpreet Singh across web development, mobile apps, and AI systems.',
     keywords: [
       'Dilpreet Singh projects',
-      'full-stack projects',
-      'AI projects',
-      'React Native apps',
+      'software engineering projects',
+      'backend projects',
+      'machine learning projects',
       'web development portfolio',
     ],
     ogImage: '/meta/og-img.png',
@@ -115,12 +115,12 @@ export const pageMetadata: Record<string, PageMeta> = {
   // Resume
   '/resume': {
     title: 'resume / dilpreet',
-    description: `View and download Dilpreet Singh's professional resume — skills, experience, and qualifications as a Full-Stack AI Engineer.`,
+    description: `View and download Dilpreet Singh's professional resume — skills, experience, and qualifications as a Software Engineer.`,
     keywords: [
       'Dilpreet Singh resume',
       'developer CV',
-      'full-stack engineer resume',
-      'AI engineer qualifications',
+      'software engineer resume',
+      'SDE qualifications',
       'download resume',
     ],
     ogImage: '/meta/og-img.png',

@@ -22,5 +22,5 @@ export const mySkills = [
 
 export const about = {
   name: 'Dilpreet Singh',
-  description: `I am a Full-Stack AI Engineer, passionate about building intelligent systems and solving real-world problems.`,
+  description: `I'm a Software Engineer and Photographer. I build scalable products that solve real-world problems.`,
 };
