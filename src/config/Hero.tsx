@@ -29,7 +29,7 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: 'Dilpreet Singh',
-  title: 'Software Engineer',
+  title: 'Dilpreet Singh - Software Engineer',
   avatar: '/assets/logo.png',
 
   // Start Time
